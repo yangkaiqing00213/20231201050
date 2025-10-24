@@ -1,0 +1,96 @@
+<!DOCTYPE html> 
+<html lang="en"> 
+    <head> 
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Single Page Application</title> 
+        <style> 
+            body {
+                font-family: Arial, sans-serif;
+                margin: 0;
+                padding: 20px;
+                background-color: #f5f5f5;
+            }
+            
+            .nav-buttons {
+                display: flex;
+                gap: 10px;
+                margin-bottom: 20px;
+            }
+            
+            .nav-buttons button {
+                padding: 10px 20px;
+                border: none;
+                border-radius: 5px;
+                background-color: #007bff;
+                color: white;
+                cursor: pointer;
+                transition: background-color 0.3s;
+            }
+            
+            .nav-buttons button:hover {
+                background-color: #0056b3;
+            }
+            
+            .nav-buttons button.active {
+                background-color: #28a745;
+            }
+            
+            .page {
+                display: none;
+                padding: 20px;
+                background-color: white;
+                border-radius: 8px;
+                box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+                min-height: 300px;
+            }
+            
+            .page.active {
+                display: block;
+            }
+            
+            h1 {
+                color: #333;
+                margin-bottom: 20px;
+            }
+            
+            .content {
+                line-height: 1.6;
+                color: #666;
+            }
+        </style> 
+    </head> 
+    <body> 
+        <div class="nav-buttons">
+            <button data-page="page1" class="active">Page 1</button> 
+            <button data-page="page2">Page 2</button> 
+            <button data-page="page3">Page 3</button> 
+        </div>
+        
+        <div id="page1" class="page active"> 
+            <h1>Welcome to Page 1</h1>
+            <div class="content">
+                <p>This is the first page of our single page application.</p>
+                <p>You can navigate between pages using the buttons above.</p>
+            </div>
+        </div> 
+        
+        <div id="page2" class="page"> 
+            <h1>Welcome to Page 2</h1>
+            <div class="content">
+                <p>This is the second page with different content.</p>
+                <p>Single page applications provide a smooth user experience without page reloads.</p>
+            </div>
+        </div> 
+        
+        <div id="page3" class="page"> 
+            <h1>Welcome to Page 3</h1>
+            <div class="content">
+                <p>This is the third and final page.</p>
+                <p>All content is loaded in a single HTML file with JavaScript handling the navigation.</p>
+            </div>
+        </div> 
+        
+        <script src="/static/js/singlepage.js"></script> 
+    </body> 
+</html>

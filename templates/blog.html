@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="杨开情的个人博客 - 贵州中医药大学医学信息工程专业学生，分享医疗信息化、前端开发和数据分析技术">
+    <meta name="keywords" content="医学信息工程,贵州中医药大学,医疗信息化,前端开发,数据分析,中文博客">
+    <title>杨开情的个人博客 - 医学信息工程专业学习与分享</title>
+    <style>
+        /* 重置样式 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', 'Microsoft YaHei', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f9fa;
+        }
+
+        /* 容器样式 */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* 顶部导航栏 */
+        .navbar {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+        }
+
+        .nav-links a:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            transform: translateY(-2px);
+        }
+
+        /* 主要内容区域 */
+        .main-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        /* 个人简介卡片 */
+        .profile-card {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
+        }
+
+        .avatar {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            margin: 0 auto 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2rem;
+            font-weight: bold;
+        }
+
+        .profile-name {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            color: #333;
+        }
+
+        .profile-desc {
+            color: #666;
+            font-size: 0.95rem;
+        }
+
+        /* 文章列表 */
+        .articles-section {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 1.5rem;
+            color: #333;
+            border-left: 4px solid #667eea;
+            padding-left: 1rem;
+        }
+
+        .article-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .article-item {
+            border-left: 3px solid #667eea;
+            padding-left: 1rem;
+            transition: all 0.3s;
+            cursor: pointer;
+            border-radius: 5px;
+            margin: 0.5rem 0;
+        }
+
+        .article-item:hover {
+            transform: translateX(5px);
+            background-color: #f8f9ff;
+            box-shadow: 0 2px 8px rgba(102, 126, 234, 0.2);
+        }
+
+        .article-title {
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            color: #333;
+        }
+
+        .article-meta {
+            color: #888;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .article-excerpt {
+            color: #666;
+            line-height: 1.5;
+        }
+
+        /* 侧边栏 */
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .sidebar-widget {
+            background: white;
+            border-radius: 15px;
+            padding: 1.5rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .widget-title {
+            font-size: 1.1rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            color: #333;
+        }
+
+        .category-list {
+            list-style: none;
+        }
+
+        .category-item {
+            margin-bottom: 0.5rem;
+        }
+
+        .category-item a {
+            color: #667eea;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .category-item a:hover {
+            color: #764ba2;
+        }
+
+        .tag-cloud {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .tag {
+            background: #f1f3f4;
+            color: #666;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .tag:hover {
+            background: #667eea;
+            color: white;
+        }
+
+        /* 底部信息 */
+        .footer {
+            background: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 3rem;
+        }
+
+        .copyright {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .main-content {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .nav-container {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .nav-links {
+                flex-direction: column;
+                gap: 0.5rem;
+                text-align: center;
+            }
+
+            .nav-links a {
+                display: block;
+                padding: 0.8rem;
+            }
+
+            .profile-card {
+                padding: 1.5rem;
+            }
+
+            .avatar {
+                width: 80px;
+                height: 80px;
+                font-size: 1.5rem;
+            }
+
+            .sidebar {
+                order: -1;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 15px;
+            }
+
+            .articles-section, .sidebar-widget {
+                padding: 1rem;
+            }
+
+            .section-title {
+                font-size: 1.3rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 顶部导航栏 -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <div class="logo">个人博客</div>
+            <ul class="nav-links">
+                <li><a href="/blog/">首页</a></li>
+                <li><a href="#about">关于</a></li>
+                <li><a href="#archive">归档</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <!-- 主要内容区域 -->
+        <div class="main-content">
+            <!-- 左侧内容 -->
+            <div class="content-left">
+                <!-- 个人简介卡片 -->
+                <div class="profile-card">
+                    <div class="avatar">杨</div>
+                    <h2 class="profile-name">杨开情</h2>
+                    <p class="profile-desc">学号：20231201050</p>
+                    <p class="profile-desc">贵州中医药大学 | 医学信息工程专业</p>
+                </div>
+
+                <!-- 文章列表 -->
+                <section class="articles-section">
+                    <h2 class="section-title">最新文章</h2>
+                    <div class="article-list">
+                        <!-- 文章1 -->
+                        <article class="article-item">
+                            <h3 class="article-title">医疗信息化系统中的前端技术应用</h3>
+                            <div class="article-meta">2024年3月15日 • 阅读时间 6分钟</div>
+                            <p class="article-excerpt">探讨现代医疗信息化系统中前端技术的应用场景，包括电子病历系统、医疗数据可视化、患者管理平台等前端开发实践...</p>
+                        </article>
+
+                        <!-- 文章2 -->
+                        <article class="article-item">
+                            <h3 class="article-title">医学数据分析与可视化技术探索</h3>
+                            <div class="article-meta">2024年3月10日 • 阅读时间 8分钟</div>
+                            <p class="article-excerpt">深入分析医学数据的特点和处理方法，介绍常用的数据分析工具和可视化技术，分享医疗数据可视化的最佳实践...</p>
+                        </article>
+
+                        <!-- 文章3 -->
+                        <article class="article-item">
+                            <h3 class="article-title">医学信息工程专业学习路线规划</h3>
+                            <div class="article-meta">2024年3月5日 • 阅读时间 5分钟</div>
+                            <p class="article-excerpt">分享医学信息工程专业的学习经验和技能培养路径，包括编程基础、医学知识、数据分析等核心能力的培养方法...</p>
+                        </article>
+                    </div>
+                </section>
+            </div>
+
+            <!-- 右侧侧边栏 -->
+            <aside class="sidebar">
+                <!-- 分类目录 -->
+                <div class="sidebar-widget">
+                    <h3 class="widget-title">文章分类</h3>
+                    <ul class="category-list">
+                        <li class="category-item"><a href="#medical-info">医学信息化 (12)</a></li>
+                        <li class="category-item"><a href="#frontend">前端开发 (8)</a></li>
+                        <li class="category-item"><a href="#data-analysis">数据分析 (6)</a></li>
+                        <li class="category-item"><a href="#programming">编程技术 (7)</a></li>
+                        <li class="category-item"><a href="#medical-knowledge">医学知识 (5)</a></li>
+                        <li class="category-item"><a href="#campus-life">校园生活 (4)</a></li>
+                    </ul>
+                </div>
+
+                <!-- 标签云 -->
+                <div class="sidebar-widget">
+                    <h3 class="widget-title">热门标签</h3>
+                    <div class="tag-cloud">
+                        <a href="#medical-informatics" class="tag">医学信息</a>
+                        <a href="#healthcare-it" class="tag">医疗IT</a>
+                        <a href="#data-visualization" class="tag">数据可视化</a>
+                        <a href="#python" class="tag">Python</a>
+                        <a href="#javascript" class="tag">JavaScript</a>
+                        <a href="#electronic-medical-record" class="tag">电子病历</a>
+                        <a href="#data-analysis" class="tag">数据分析</a>
+                        <a href="#web-development" class="tag">Web开发</a>
+                        <a href="#guizhou-university" class="tag">贵州中医药大学</a>
+                        <a href="#medical-engineering" class="tag">医学工程</a>
+                        <a href="#database" class="tag">数据库</a>
+                        <a href="#frontend" class="tag">前端技术</a>
+                    </div>
+                </div>
+
+                <!-- 归档 -->
+                <div class="sidebar-widget">
+                    <h3 class="widget-title">文章归档</h3>
+                    <ul class="category-list">
+                        <li class="category-item"><a href="#2024-03">2024年3月 (3)</a></li>
+                        <li class="category-item"><a href="#2024-02">2024年2月 (5)</a></li>
+                        <li class="category-item"><a href="#2024-01">2024年1月 (4)</a></li>
+                        <li class="category-item"><a href="#2023-12">2023年12月 (6)</a></li>
+                        <li class="category-item"><a href="#2023-11">2023年11月 (4)</a></li>
+                        <li class="category-item"><a href="#2023-10">2023年10月 (3)</a></li>
+                    </ul>
+                </div>
+            </aside>
+        </div>
+    </div>
+
+    <!-- 底部信息 -->
+    <footer class="footer">
+        <div class="container">
+            <p class="copyright">© 2024 杨开情的个人博客. 保留所有权利.</p>
+            <p class="copyright">基于HTML5 & CSS3技术构建 | 简约清新风格</p>
+            <p class="copyright">记录技术成长，分享生活感悟</p>
+        </div>
+    </footer>
+</body>
+</html>
