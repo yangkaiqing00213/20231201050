@@ -1,0 +1,20 @@
+/* 帖子样式 */
+.post-item {
+    background-color: #77dd11;
+    padding: 20px;
+    margin: 10px;
+    border-radius: 4px;
+}
+
+/* 页面底部留白，避免最后一个帖子被遮挡 */
+body {
+    margin: 0;
+    padding-bottom: 50px;
+}
+
+/* 加载中提示样式（可选，但建议添加） */
+.loading {
+    text-align: center;
+    padding: 20px;
+    color: #666;
+}
